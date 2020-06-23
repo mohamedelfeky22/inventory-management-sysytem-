@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Entity_CompanyModelStoreContainer" CdmEntityContainer="Entity_CompanyEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Cus_Name" ColumnName="Cus_Name" />
+          <ScalarProperty Name="Cus_HomePhone" ColumnName="Cus_HomePhone" />
+          <ScalarProperty Name="Cus_Email" ColumnName="Cus_Email" />
+          <ScalarProperty Name="Cus_Website" ColumnName="Cus_Website" />
+          <ScalarProperty Name="Cus_MobilePhone" ColumnName="Cus_MobilePhone" />
+          <ScalarProperty Name="Cus_Fax" ColumnName="Cus_Fax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+          <ScalarProperty Name="Prod_Name" ColumnName="Prod_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Unit">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Product_Unit">
+        <MappingFragment StoreEntitySet="Product-Unit">
+          <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+          <ScalarProperty Name="Prod_Unit" ColumnName="Prod_Unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreManagers">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.StoreManager">
+        <MappingFragment StoreEntitySet="StoreManager">
+          <ScalarProperty Name="SK_Name" ColumnName="SK_Name" />
+          <ScalarProperty Name="SK_Address" ColumnName="SK_Address" />
+          <ScalarProperty Name="SK_MobilePhone" ColumnName="SK_MobilePhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+          <ScalarProperty Name="Sup_HomePhone" ColumnName="Sup_HomePhone" />
+          <ScalarProperty Name="Sup_Email" ColumnName="Sup_Email" />
+          <ScalarProperty Name="Sup_Website" ColumnName="Sup_Website" />
+          <ScalarProperty Name="Sup_Fax" ColumnName="Sup_Fax" />
+          <ScalarProperty Name="Sup_MobliePhone" ColumnName="Sup_MobliePhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supply_Permission">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Supply_Permission">
+        <MappingFragment StoreEntitySet="Supply_Permission">
+          <ScalarProperty Name="Per_Id" ColumnName="Per_Id" />
+          <ScalarProperty Name="Per_Date" ColumnName="Per_Date" />
+          <ScalarProperty Name="War_Name" ColumnName="War_Name" />
+          <ScalarProperty Name="Sup_Name" ColumnName="Sup_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supply_Permission_Product">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Supply_Permission_Product">
+        <MappingFragment StoreEntitySet="Supply_Permission-Product">
+          <ScalarProperty Name="Per_Id" ColumnName="Per_Id" />
+          <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+          <ScalarProperty Name="Prod_Name" ColumnName="Prod_Name" />
+          <ScalarProperty Name="Prod_Quantity" ColumnName="Prod_Quantity" />
+          <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vouchers">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Voucher">
+        <MappingFragment StoreEntitySet="Voucher">
+          <ScalarProperty Name="Vou_Id" ColumnName="Vou_Id" />
+          <ScalarProperty Name="War_Name" ColumnName="War_Name" />
+          <ScalarProperty Name="Vou_Date" ColumnName="Vou_Date" />
+          <ScalarProperty Name="Cus_Name" ColumnName="Cus_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voucher_Product">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Voucher_Product">
+        <MappingFragment StoreEntitySet="Voucher-Product">
+          <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+          <ScalarProperty Name="Vou_Id" ColumnName="Vou_Id" />
+          <ScalarProperty Name="Prod_Name" ColumnName="Prod_Name" />
+          <ScalarProperty Name="Prod_Quantity" ColumnName="Prod_Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Warehouses">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Warehouse">
+        <MappingFragment StoreEntitySet="Warehouse">
+          <ScalarProperty Name="War_Name" ColumnName="War_Name" />
+          <ScalarProperty Name="War_Address" ColumnName="War_Address" />
+          <ScalarProperty Name="SK_Name" ColumnName="SK_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Warhouse_Product">
+      <EntityTypeMapping TypeName="Entity_CompanyModel.Warhouse_Product">
+        <MappingFragment StoreEntitySet="Warhouse-Product">
+          <ScalarProperty Name="War_Name" ColumnName="War_Name" />
+          <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+          <ScalarProperty Name="Prod_Quantity" ColumnName="Prod_Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

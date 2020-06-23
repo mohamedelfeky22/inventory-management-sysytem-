@@ -1,0 +1,15 @@
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\bin\Debug\EntityProject.exe.config
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\bin\Debug\EntityProject.exe
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\bin\Debug\EntityProject.pdb
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\bin\Debug\EntityFramework.dll
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\bin\Debug\EntityFramework.xml
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\obj\Debug\EntityProject.csprojAssemblyReference.cache
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\obj\Debug\EntityProject.Form1.resources
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\obj\Debug\EntityProject.Properties.Resources.resources
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\obj\Debug\EntityProject.csproj.GenerateResource.cache
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\obj\Debug\EntityProject.csproj.CoreCompileInputs.cache
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\obj\Debug\EntityProject.csproj.CopyComplete
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\obj\Debug\EntityProject.exe
+C:\Users\Abanob\Source\Repos\EntityProject\EntityProject\obj\Debug\EntityProject.pdb

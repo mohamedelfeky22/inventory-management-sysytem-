@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Entity_CompanyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Cus_Name" />
+    </Key>
+    <Property Name="Cus_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cus_HomePhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cus_Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cus_Website" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cus_MobilePhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cus_Fax" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Product-Unit">
+    <Key>
+      <PropertyRef Name="Prod_Id" />
+      <PropertyRef Name="Prod_Unit" />
+    </Key>
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Unit" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoreManager">
+    <Key>
+      <PropertyRef Name="SK_Name" />
+    </Key>
+    <Property Name="SK_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SK_Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="SK_MobilePhone" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Sup_Name" />
+    </Key>
+    <Property Name="Sup_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sup_HomePhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sup_Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sup_Website" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sup_Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sup_MobliePhone" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Supply_Permission">
+    <Key>
+      <PropertyRef Name="Per_Id" />
+    </Key>
+    <Property Name="Per_Id" Type="int" Nullable="false" />
+    <Property Name="Per_Date" Type="date" />
+    <Property Name="War_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sup_Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Supply_Permission-Product">
+    <Key>
+      <PropertyRef Name="Per_Id" />
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="Per_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Prod_Quantity" Type="int" />
+    <Property Name="Production_Date" Type="date" />
+    <Property Name="Expiration_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Voucher">
+    <Key>
+      <PropertyRef Name="Vou_Id" />
+    </Key>
+    <Property Name="Vou_Id" Type="int" Nullable="false" />
+    <Property Name="War_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Vou_Date" Type="date" />
+    <Property Name="Cus_Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Voucher-Product">
+    <Key>
+      <PropertyRef Name="Prod_Id" />
+      <PropertyRef Name="Vou_Id" />
+    </Key>
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+    <Property Name="Vou_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Prod_Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="War_Name" />
+    </Key>
+    <Property Name="War_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="War_Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="SK_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Warhouse-Product">
+    <Key>
+      <PropertyRef Name="War_Name" />
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="War_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Prod_Id" Type="int" Nullable="false" />
+    <Property Name="Prod_Quantity" Type="int" />
+  </EntityType>
+  <Association Name="FK_Product-Unit_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product-Unit" Type="Self.Product-Unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Prod_Id" />
+      </Principal>
+      <Dependent Role="Product-Unit">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Permission_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Supply_Permission" Type="Self.Supply_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Sup_Name" />
+      </Principal>
+      <Dependent Role="Supply_Permission">
+        <PropertyRef Name="Sup_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Permission_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Supply_Permission" Type="Self.Supply_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="War_Name" />
+      </Principal>
+      <Dependent Role="Supply_Permission">
+        <PropertyRef Name="War_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Permission-Product_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Supply_Permission-Product" Type="Self.Supply_Permission-Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Prod_Id" />
+      </Principal>
+      <Dependent Role="Supply_Permission-Product">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Permission-Product_Supply_Permission1">
+    <End Role="Supply_Permission" Type="Self.Supply_Permission" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Supply_Permission-Product" Type="Self.Supply_Permission-Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supply_Permission">
+        <PropertyRef Name="Per_Id" />
+      </Principal>
+      <Dependent Role="Supply_Permission-Product">
+        <PropertyRef Name="Per_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voucher_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Voucher" Type="Self.Voucher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Cus_Name" />
+      </Principal>
+      <Dependent Role="Voucher">
+        <PropertyRef Name="Cus_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voucher_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Voucher" Type="Self.Voucher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="War_Name" />
+      </Principal>
+      <Dependent Role="Voucher">
+        <PropertyRef Name="War_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voucher-Product_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Voucher-Product" Type="Self.Voucher-Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Prod_Id" />
+      </Principal>
+      <Dependent Role="Voucher-Product">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voucher-Product_Voucher">
+    <End Role="Voucher" Type="Self.Voucher" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Voucher-Product" Type="Self.Voucher-Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voucher">
+        <PropertyRef Name="Vou_Id" />
+      </Principal>
+      <Dependent Role="Voucher-Product">
+        <PropertyRef Name="Vou_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Warehouse_StoreManager">
+    <End Role="StoreManager" Type="Self.StoreManager" Multiplicity="1" />
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreManager">
+        <PropertyRef Name="SK_Name" />
+      </Principal>
+      <Dependent Role="Warehouse">
+        <PropertyRef Name="SK_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Warhouse-Product_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Warhouse-Product" Type="Self.Warhouse-Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Prod_Id" />
+      </Principal>
+      <Dependent Role="Warhouse-Product">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Warhouse-Product_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Warhouse-Product" Type="Self.Warhouse-Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="War_Name" />
+      </Principal>
+      <Dependent Role="Warhouse-Product">
+        <PropertyRef Name="War_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entity_CompanyModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product-Unit" EntityType="Self.Product-Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StoreManager" EntityType="Self.StoreManager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supply_Permission" EntityType="Self.Supply_Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supply_Permission-Product" EntityType="Self.Supply_Permission-Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Voucher-Product" EntityType="Self.Voucher-Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Warhouse-Product" EntityType="Self.Warhouse-Product" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Product-Unit_Product" Association="Self.FK_Product-Unit_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product-Unit" EntitySet="Product-Unit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Permission_Supplier" Association="Self.FK_Supply_Permission_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Supply_Permission" EntitySet="Supply_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Permission_Warehouse" Association="Self.FK_Supply_Permission_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Supply_Permission" EntitySet="Supply_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Permission-Product_Product" Association="Self.FK_Supply_Permission-Product_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Supply_Permission-Product" EntitySet="Supply_Permission-Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Permission-Product_Supply_Permission1" Association="Self.FK_Supply_Permission-Product_Supply_Permission1">
+      <End Role="Supply_Permission" EntitySet="Supply_Permission" />
+      <End Role="Supply_Permission-Product" EntitySet="Supply_Permission-Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voucher_Customer" Association="Self.FK_Voucher_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Voucher" EntitySet="Voucher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voucher_Warehouse" Association="Self.FK_Voucher_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Voucher" EntitySet="Voucher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voucher-Product_Product" Association="Self.FK_Voucher-Product_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Voucher-Product" EntitySet="Voucher-Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voucher-Product_Voucher" Association="Self.FK_Voucher-Product_Voucher">
+      <End Role="Voucher" EntitySet="Voucher" />
+      <End Role="Voucher-Product" EntitySet="Voucher-Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Warehouse_StoreManager" Association="Self.FK_Warehouse_StoreManager">
+      <End Role="StoreManager" EntitySet="StoreManager" />
+      <End Role="Warehouse" EntitySet="Warehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Warhouse-Product_Product" Association="Self.FK_Warhouse-Product_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Warhouse-Product" EntitySet="Warhouse-Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Warhouse-Product_Warehouse" Association="Self.FK_Warhouse-Product_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Warhouse-Product" EntitySet="Warhouse-Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
